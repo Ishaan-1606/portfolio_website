@@ -1,0 +1,512 @@
+/* Universal reset and font settings */
+* {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* CSS Variables for theme colors */
+:root {
+  --dark-bg: #0a0a0a;
+  --darker-bg: #050505;
+  --accent: #1abc9c; /* Neelkanth Turquoise */
+  --accent-glow: rgba(26, 188, 156, 0.4); /* Glow bloom */
+  --text: #ffffff;
+}
+
+/* Body styling */
+body {
+  background-color: var(--dark-bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
+}
+
+/* Navbar styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Logo styling within the navbar */
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+/* Navigation links styling within the navbar */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+/* Styling for individual navigation links */
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Pseudo-element for the underline effect on navigation links */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* Adjusted to be below the text */
+  left: 0;
+  width: 0; /* Initially no width */
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+/* Hover effect for navigation links, expanding the underline */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section styling */
+.hero {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  padding: 12% 5%; /* Responsive padding */
+  background: radial-gradient(
+    circle at 75% 30%,
+    var(--accent-glow) 0%,
+    transparent 30%
+  ); /* Radial gradient background */
+}
+
+/* Hero content container styling */
+.hero-content {
+  flex: 1; /* Takes up available space */
+  padding-right: 5rem; /* Spacing from the image */
+}
+
+/* Hero image container styling */
+.hero-image {
+  flex: 1; /* Takes up available space */
+  text-align: center; /* Center the image */
+  position: relative;
+}
+
+/* Profile image styling */
+.profile-img {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%; /* Makes the image round */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border: 3px solid var(--accent); /* Border around the profile image */
+  box-shadow: 0 0 50px var(--accent-glow); /* Glow effect around the image */
+  animation: float 3s ease-in-out infinite;
+  filter: grayscale(0.2) contrast(1.1);
+}
+
+/* Keyframes for the floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0); /* Start and end at original position */
+  }
+  50% {
+    transform: translateY(
+      -20px
+    ); /* Move up 20px in the middle of the animation */
+  }
+}
+
+/* Styling for the main heading in the hero section */
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    45deg,
+    var(--accent) 30%,
+    #ffffff 70%
+  ); /* Gradient text color */
+  -webkit-background-clip: text; /* Clip background to text */
+  -webkit-text-fill-color: transparent; /* Make text transparent to show background */
+}
+
+/* Styling for paragraphs in the hero section */
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9; /* Slightly transparent text */
+  max-width: 600px; /* Limit paragraph width */
+}
+
+/* Styling for the Call-to-Action button */
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(
+    45deg,
+    var(--accent),
+    #27ae60
+  ); /* Gradient background */
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden; /* Hides overflow for hover effect */
+}
+
+/* Skills Section */
+.skills {
+  padding: 5rem 5%; /* Padding for the skills section */
+  background: var(--darker-bg); /* Darker background color */
+}
+
+/* Skills grid layout */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive grid columns */
+  gap: 2rem; /* Gap between grid items */
+  margin-top: 3rem; /* Top margin for spacing */
+}
+
+/* Individual skill card styling */
+.skill-card {
+  padding: 2rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05); /* Semi-transparent white background */
+  transition: all 0.3s ease; /* Smooth transitions for hover effects */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Light border */
+  backdrop-filter: blur(5px); /* Blur effect for a frosted glass look */
+  text-align: center; /* Center align text and icons */
+}
+
+/* Hover effect for skill cards */
+.skill-card:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  border-color: var(--accent); /* Change border color on hover */
+  box-shadow: 0 10px 30px var(--accent-glow); /* Glow effect on hover */
+}
+
+/* Styling for icons within skill cards */
+.skill-card i {
+  font-size: 2.5rem;
+  color: var(--accent); /* Accent color for icons */
+  margin-bottom: 1rem; /* Spacing below the icon */
+}
+
+/* Footer styling */
+footer {
+  background: var(--darker-bg); /* Darker background for the footer */
+  padding: 3rem 5%; /* Padding for the footer */
+  text-align: center; /* Center align footer content */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Top border */
+}
+
+/* Social links container styling */
+.social-links {
+  margin-top: 2rem; /* Top margin for spacing */
+  display: flex;
+  justify-content: center; /* Center align social icons */
+  gap: 2rem; /* Gap between social icons */
+}
+
+/* Styling for individual social links */
+.social-links a {
+  color: var(--text); /* Text color for icons */
+  font-size: 1.5rem; /* Icon size */
+  transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+/* Hover effect for social links */
+.social-links a:hover {
+  color: var(--accent); /* Change color to accent on hover */
+  transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  /* Adjust hero section for smaller screens */
+  .hero {
+    flex-direction: column; /* Stack content vertically */
+    text-align: center; /* Center align text */
+    padding-top: 8rem; /* Adjust padding for fixed navbar */
+  }
+
+  /* Adjust hero content for smaller screens */
+  .hero-content {
+    padding-right: 0; /* Remove right padding */
+    margin-bottom: 3rem; /* Add bottom margin for spacing */
+  }
+
+  /* Adjust profile image size for smaller screens */
+  .profile-img {
+    width: 280px;
+    height: 280px;
+  }
+
+  /* Hide navigation links on smaller screens (e.g., for a hamburger menu) */
+  .nav-links {
+    display: none;
+  }
+
+  /* Adjust logo font size and padding for smaller screens */
+  .logo {
+    font-size: 1.5rem;
+    padding-left: 2rem;
+  }
+}
+
+/* Projects Section */
+.projects {
+  padding: 5rem 5%;
+  background: var(--dark-bg);
+}
+
+/* Projects heading */
+.projects h2,
+.skills h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, var(--accent), #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Project grid layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+/* Individual project card container */
+.project-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for project cards */
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+/* Image container */
+.project-img {
+  width: 300px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  filter: grayscale(0.2) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+/* Project content */
+.project-content {
+  padding: 2rem;
+  color: var(--text);
+}
+
+.project-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.project-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  line-height: 1.7;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+.projects {
+  padding: 5rem 5%;
+  background: var(--dark-bg);
+}
+
+.projects h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, var(--accent), #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.project-img {
+  width: 300px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  filter: grayscale(0.2) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.project-content {
+  padding: 2rem;
+  color: var(--text);
+}
+
+.project-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.project-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  line-height: 1.7;
+}
+
+/* Resume-Like Sections (Education, Experience, Volunteering, Contact) */
+.resume-section {
+  padding: 5rem 5%;
+  background: var(--darker-bg);
+}
+
+.resume-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, var(--accent), #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.resume-card {
+  padding: 2rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  color: var(--text);
+}
+
+.resume-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.resume-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.resume-card p,
+.resume-card ul {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.resume-card ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.resume-card .duration {
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.resume-card a {
+  color: var(--accent);
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+.resume-card a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Responsive fix for single-column stacking */
+@media (max-width: 768px) {
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+}
